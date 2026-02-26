@@ -10,7 +10,7 @@ function Main({}) {
         Find the latest news on any topic and save them to your personal
         account.
       </p>
-      <Search /> {/* Placeholder for Search component */}
+      <Search />
     </main>
   );
 }

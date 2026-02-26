@@ -14,3 +14,27 @@
   position: center;
   border-radius: 50%;
 }
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 48px;
+  gap: 24px;
+}
+
+.about__text_author {
+  width: 600px;
+  height: 46px;
+  font-family: "Roboto Four";
+  font-size: 40px;
+  line-height: 46px;
+  font-weight: 400;
+}
+
+.about__text_bio {
+  width: 600px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: "Roboto Four";
+}
