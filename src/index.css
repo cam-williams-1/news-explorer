@@ -1,0 +1,20 @@
+@import url(./vendor/normalize.css);
+
+/* Global styles Template */
+@font-face {
+  src: url("../src/vendor/roboto-700.woff2") format("woff");
+  font-family: "Roboto Slab";
+  font-weight: 700;
+}
+
+@font-face {
+  src: url("../src/vendor/roboto-500.woff") format("woff");
+  font-family: "Roboto Five";
+  font-weight: 500;
+}
+
+@font-face {
+  src: url("../src/vendor/roboto-slab-400-regular.woff") format("woff");
+  font-family: "Roboto Four";
+  font-weight: 400;
+}

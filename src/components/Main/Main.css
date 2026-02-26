@@ -1,0 +1,22 @@
+.main {
+  height: 496px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__title {
+  color: #fff;
+  width: 608px;
+  height: 128px;
+  font-family: "Roboto Four";
+  font-size: 60px;
+  line-height: 64px;
+  margin: 0;
+}
+
+.main__subtitle {
+  color: #fff;
+  margin: 0;
+}
