@@ -1,0 +1,141 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 576px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.3);
+  margin: 16px;
+}
+
+.card__header {
+  position: relative;
+  width: 100%;
+  height: 272px;
+  overflow: hidden;
+}
+
+.card__header_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.card__header_genre {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 87px;
+  height: 40px;
+  left: 16px;
+  z-index: 2;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  font-family: "Roboto Five";
+  font-size: 14px;
+}
+
+.card__header_close-btn {
+  position: relative;
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 2;
+}
+
+.card__header_close-btn-wrapper {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.card__header_trash-icon {
+  transition: filter 0.2s;
+}
+
+.card__header_close-btn:hover .card__header_trash-icon {
+  filter: brightness(0) saturate(100%) invert(0);
+}
+
+.card__header_remove-popup {
+  display: none;
+  position: absolute;
+  right: 48px;
+  top: 0;
+  width: 110px;
+  height: 40px;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  font-family: "Roboto Five";
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  z-index: 3;
+}
+
+.card__header_close-btn:hover ~ .card__header_remove-popup,
+.card__header_close-btn:focus ~ .card__header_remove-popup {
+  display: flex;
+}
+
+.card__info {
+  position: relative;
+  background: #fff;
+  padding: 0 16px;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  justify-content: flex-start;
+}
+
+.card__info_date {
+  width: 146px;
+  height: 24px;
+  font-family: "Roboto Four";
+  font-size: 18px;
+  color: #b6bcbf;
+  margin: 16px 0 0 0;
+}
+
+.card__info_title {
+  width: 352px;
+  font-family: "Roboto Slab";
+  font-size: 26px;
+  color: #1a1b22;
+  margin: 0;
+}
+
+.card__info_descript {
+  width: 352px;
+  font-family: "Roboto Four";
+  font-size: 16px;
+  color: #1a1b22;
+}
+
+.card__info_publisher {
+  width: 146px;
+  font-family: "Roboto Four";
+  font-size: 16px;
+  color: #b6bcbf;
+}

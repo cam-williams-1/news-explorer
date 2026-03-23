@@ -1,0 +1,22 @@
+.success-modal__content {
+  height: 182px;
+  display: flex;
+  flex-direction: column;
+}
+
+.success-modal__message {
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "Roboto Five", sans-serif;
+}
+
+.success-modal__signin-btn {
+  color: #2f71e5;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  font-family: "Roboto Five";
+  cursor: pointer;
+}

@@ -32,5 +32,9 @@
 }
 
 .search__button:hover {
-  background-color: #0056b3;
+  background-color: #347eff;
+}
+
+.search__button:active {
+  background-color: #2a65cc;
 }

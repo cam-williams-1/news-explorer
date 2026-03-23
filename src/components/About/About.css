@@ -3,15 +3,13 @@
   justify-content: center;
   align-items: center;
   background: #fff;
-  width: 100vw;
   height: 624px;
 }
 
 .about__avatar {
   width: 464px;
   height: 464px;
-  size: cover;
-  position: center;
+  object-fit: cover;
   border-radius: 50%;
 }
 

@@ -5,6 +5,14 @@
   border-bottom: 2px solid rgba(196, 196, 196, 0.2);
 }
 
+.header__saved-news {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(196, 196, 196, 0.2);
+}
+
 .header__logo {
   display: flex;
   padding-left: 104px;
@@ -20,11 +28,27 @@
   color: #fff;
 }
 
+.header__title_saved-news {
+  color: #000;
+  margin: 0;
+  font-family: "Roboto Slab";
+  font-size: 20px;
+  line-height: 24px;
+}
+
 .header__link {
   text-decoration: none;
 }
 
 .header__btns {
+  display: flex;
+  align-items: center;
+  padding-right: 104px;
+  position: relative;
+  gap: 42px;
+}
+
+.header__btns_logged-in {
   display: flex;
   align-items: center;
   padding-right: 104px;
@@ -40,13 +64,37 @@
   border: none;
   background: transparent;
   cursor: pointer;
+  position: relative;
+}
+
+.header__btns-home-saved-news {
+  font-family: "Roberto Five";
+  font-size: 18px;
+  line-height: 24px;
+  color: #000;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
 }
 
 .header__btns-home-stroke {
   width: 56px;
   position: absolute;
-  top: 64px;
+  top: 53px;
   right: 322px;
+  left: 0;
+  margin: "auto";
+}
+
+.header__btns-home-stroke-saved-news {
+  width: 117px;
+  position: absolute;
+  left: 0;
+  top: 53px;
+  right: 322px;
+  margin: auto;
+  color: #000;
 }
 
 .header__btns-login {
@@ -60,4 +108,57 @@
   height: 48px;
   background: transparent;
   cursor: pointer;
+  position: relative;
+}
+
+.header__btns-login-saved-news {
+  font-family: "Roberto Five";
+  font-size: 18px;
+  line-height: 24px;
+  color: #000;
+  border-color: #000;
+  border-radius: 100px;
+  width: 176px;
+  height: 48px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.header__btns-login-saved-news-logout {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 10px;
+  right: 16px;
+}
+
+.header__btns-login .header__btns-login-saved-news-logout {
+  filter: invert(1);
+}
+
+.header__btns-saved {
+  font-family: "Roberto Five";
+  font-size: 18px;
+  line-height: 24px;
+  color: #fff;
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-left: 76px;
+  margin-right: 64px;
+}
+
+.header__btns-saved-saved-news {
+  font-family: "Roberto Five";
+  font-size: 18px;
+  line-height: 24px;
+  color: #000;
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  margin-left: 76px;
+  margin-right: 64px;
 }
