@@ -38,3 +38,11 @@
 .search__button:active {
   background-color: #2a65cc;
 }
+
+.search__error {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-left: 20px;
+  position: absolute;
+}

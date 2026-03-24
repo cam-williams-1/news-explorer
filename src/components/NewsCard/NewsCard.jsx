@@ -5,14 +5,23 @@ import { useState } from "react";
 import natureImg from "../../assets/nature.svg";
 import trashIcon from "../../assets/trash.svg";
 
-function NewsCard() {
+
+function NewsCard({ article }) {
   const [isTrashHovered, setIsTrashHovered] = useState(false);
+  const {
+    urlToImage,
+    title,
+    description,
+    publishedAt,
+    source,
+    url,
+  } = article || {};
 
   return (
-    <li className="card">
+    <div className="card">
       <div className="card__header">
-        <img src={natureImg} alt="image" className="card__header_img" />
-        <p className="card__header_genre">Nature</p>
+        <img src={urlToImage || natureImg} alt="image" className="card__header_img" />
+        <p className="card__header_genre">{source?.name || "News"}</p>
         <div className="card__header_close-btn-wrapper">
           <button className="card__header_close-btn">
             <img
@@ -29,12 +38,14 @@ function NewsCard() {
         </div>
       </div>
       <div className="card__info">
-        <p className="card__info_date">Jan 1, 2026</p>
-        <h3 className="card__info_title">News Title</h3>
-        <p className="card__info_descript">description</p>
-        <p className="card__info_publisher">Publisher</p>
+        <p className="card__info_date">{publishedAt ? new Date(publishedAt).toLocaleDateString() : ""}</p>
+        <h3 className="card__info_title">
+          <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
+        </h3>
+        <p className="card__info_descript">{description}</p>
+        <p className="card__info_publisher">{source?.name || "Publisher"}</p>
       </div>
-    </li>
+    </div>
   );
 }
 

@@ -6,6 +6,8 @@ import "./App.css";
 
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import Results from "../Results/Results";
+import { searchNews } from "../../utils/api";
 import About from "../About/About";
 import SavedNews from "../SavedNews/SavedNews";
 import Footer from "../Footer/Footer";
@@ -23,6 +25,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isPreloaderVisible, setIsPreloaderVisible] = useState(false);
+  const [articles, setArticles] = useState([]);
 
   // Modal handlers
   const openRegisterModal = () => setActiveModal("register");
@@ -31,12 +34,21 @@ function App() {
 
   const isSavedNews = location.pathname === "/saved-news";
 
-  const handleSearch = () => {
+  const handleSearch = (input) => {
     setIsPreloaderVisible(true);
-    // Simulate search completion
-    setTimeout(() => {
-      setIsPreloaderVisible(false);
-    }, 2000);
+    searchNews(input)
+      .then((data) => {
+        setArticles(data.articles || []);
+      })
+      .catch((err) => {
+        setArticles([]);
+        console.error("API search error:", err);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsPreloaderVisible(false);
+        }, 1500);
+      });
   };
 
   return (
@@ -57,8 +69,10 @@ function App() {
                 <Main
                   handleSearch={handleSearch}
                   isPreloaderVisible={isPreloaderVisible}
+                  articles={articles}
                 />
                 {isPreloaderVisible && <Preloader />}
+                {!isPreloaderVisible && <Results articles={articles} />}
                 <About />
               </>
             }
