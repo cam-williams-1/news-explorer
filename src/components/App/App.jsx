@@ -26,6 +26,9 @@ function App() {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [isPreloaderVisible, setIsPreloaderVisible] = useState(false);
   const [articles, setArticles] = useState([]);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [lastSearchKeyword, setLastSearchKeyword] = useState("");
 
   // Modal handlers
   const openRegisterModal = () => setActiveModal("register");
@@ -36,12 +39,16 @@ function App() {
 
   const handleSearch = (input) => {
     setIsPreloaderVisible(true);
+    setHasSearched(false); // Reset before search
+    setLastSearchKeyword(input); // Track the last search keyword
     searchNews(input)
       .then((data) => {
         setArticles(data.articles || []);
+        setHasSearched(true);
       })
       .catch((err) => {
         setArticles([]);
+        setHasSearched(true);
         console.error("API search error:", err);
       })
       .finally(() => {
@@ -49,6 +56,15 @@ function App() {
           setIsPreloaderVisible(false);
         }, 1500);
       });
+  };
+
+  const handleSaveArticle = (article) => {
+    setSavedArticles((prev) => {
+      // Prevent duplicates by url
+      if (prev.some((a) => a.url === article.url)) return prev;
+      // Attach the last search keyword to the article
+      return [...prev, { ...article, keyword: lastSearchKeyword }];
+    });
   };
 
   return (
@@ -72,12 +88,32 @@ function App() {
                   articles={articles}
                 />
                 {isPreloaderVisible && <Preloader />}
-                {!isPreloaderVisible && <Results articles={articles} />}
+                {!isPreloaderVisible && hasSearched && (
+                  <Results
+                    articles={articles}
+                    hasSearched={hasSearched}
+                    isLoggedIn={isLoggedIn}
+                    onSaveArticle={handleSaveArticle}
+                    savedArticles={savedArticles}
+                  />
+                )}
                 <About />
               </>
             }
           />
-          <Route path="/saved-news" element={<SavedNews />} />
+          <Route
+            path="/saved-news"
+            element={
+              <SavedNews
+                savedArticles={savedArticles}
+                onRemoveArticle={(article) =>
+                  setSavedArticles((prev) =>
+                    prev.filter((a) => a.url !== article.url),
+                  )
+                }
+              />
+            }
+          />
         </Routes>
 
         <Footer />
@@ -100,7 +136,11 @@ function App() {
         <LoginModal
           isOpen={activeModal === "login"}
           closeActiveModal={closeActiveModal}
-          onSubmit={() => {}}
+          onSubmit={() => {
+            // FOR NOW ONLY LOGS IN TO ADMIN
+            setIsLoggedIn(true);
+            closeActiveModal();
+          }}
           onSwitchToRegister={() => {
             closeActiveModal();
             setTimeout(() => setActiveModal("register"), 0);

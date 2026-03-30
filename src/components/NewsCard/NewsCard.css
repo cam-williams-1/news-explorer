@@ -9,7 +9,6 @@
   border-width: 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.3);
-  margin: 16px;
 }
 
 .card__header {
@@ -20,8 +19,8 @@
 }
 
 .card__header_img {
-  width: 100%;
-  height: 100%;
+  width: 400px;
+  height: 272px;
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -97,6 +96,57 @@
   display: flex;
 }
 
+.card__header_bookmark-icon {
+  display: block;
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+}
+
+.card__header_save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 2;
+  padding: 0;
+  position: relative;
+}
+
+.card__header_save-btn:hover .card__header_bookmark-icon,
+.card__header_save-btn:focus .card__header_bookmark-icon {
+  filter: brightness(0) saturate(100%) invert(0);
+}
+
+.card__header_save-popup {
+  display: none;
+  position: absolute;
+  right: 48px;
+  top: 0;
+  width: 170px;
+  background: #fff;
+  color: #1a1b22;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 8px 12px;
+  font-size: 14px;
+  z-index: 10;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__header_save-btn:hover ~ .card__header_save-popup,
+.card__header_save-btn:focus ~ .card__header_save-popup {
+  display: flex;
+}
+
 .card__info {
   position: relative;
   background: #fff;
@@ -120,10 +170,19 @@
 
 .card__info_title {
   width: 352px;
-  font-family: "Roboto Slab";
+  font-family: "Roboto Four";
   font-size: 26px;
   color: #1a1b22;
   margin: 0;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.card__info_title-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .card__info_descript {

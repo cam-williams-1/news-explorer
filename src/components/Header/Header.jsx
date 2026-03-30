@@ -80,7 +80,7 @@ function Header({ isLoggedIn, isSavedNews, currentUser, onSignIn, onSignOut }) {
             }
             onClick={onSignOut}
           >
-            {currentUser?.name || "User"}
+            {currentUser?.name || "Cam"}
             <img
               className="header__btns-login-saved-news-logout"
               src={logoutIcon}

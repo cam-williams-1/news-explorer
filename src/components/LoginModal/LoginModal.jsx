@@ -10,11 +10,48 @@ function LoginModal({
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-  const isFormValid = email.trim() !== "" && password.trim() !== "";
+  function validateEmail(value) {
+    // Simple email regex
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function handleEmailChange(e) {
+    const value = e.target.value;
+    setEmail(value);
+    if (!validateEmail(value)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+  }
+
+  function handlePasswordChange(e) {
+    const value = e.target.value;
+    setPassword(value);
+    if (value.length < 8) {
+      setPasswordError("Password must be at least 8 characters");
+    } else {
+      setPasswordError("");
+    }
+  }
+
+  const isFormValid =
+    validateEmail(email) &&
+    password.length >= 8 &&
+    !emailError &&
+    !passwordError;
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+    }
+    if (password.length < 8) {
+      setPasswordError("Password must be at least 8 characters");
+    }
     if (isFormValid) {
       onSubmit({ email, password });
     }
@@ -39,9 +76,14 @@ function LoginModal({
           className="modal__input"
           placeholder="Enter email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={handleEmailChange}
           required
         />
+        {emailError && (
+          <span className="modal__error" style={{ color: "red" }}>
+            {emailError}
+          </span>
+        )}
       </label>
       <label className="modal__label">
         Password
@@ -51,10 +93,15 @@ function LoginModal({
           className="modal__input"
           placeholder="Enter password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
           required
           minLength={8}
         />
+        {passwordError && (
+          <span className="modal__error" style={{ color: "red" }}>
+            {passwordError}
+          </span>
+        )}
       </label>
       <button
         type="button"

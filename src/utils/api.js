@@ -31,3 +31,24 @@ export const searchNews = (query) => {
     },
   ).then(checkResponse);
 };
+
+// simulation for backend responses
+export const searchNewsTest = (keyword) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        articles: [
+          {
+            title: `Fake Article about ${keyword}`,
+            description: "This is a simulated article.",
+            url: "https://example.com/fake-article",
+            urlToImage: "https://via.placeholder.com/150",
+            publishedAt: new Date().toISOString(),
+            source: { name: "Fake News" },
+          },
+          // ...add more fake articles if desired
+        ],
+      });
+    }, 500); // Simulate network delay
+  });
+};

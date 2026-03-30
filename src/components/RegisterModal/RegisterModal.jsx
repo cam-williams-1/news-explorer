@@ -11,12 +11,63 @@ function RegisterModal({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+
+  function validateEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function handleEmailChange(e) {
+    const value = e.target.value;
+    setEmail(value);
+    if (!validateEmail(value)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+  }
+
+  function handlePasswordChange(e) {
+    const value = e.target.value;
+    setPassword(value);
+    if (value.length < 8) {
+      setPasswordError("Password must be at least 8 characters");
+    } else {
+      setPasswordError("");
+    }
+  }
+
+  function handleUsernameChange(e) {
+    const value = e.target.value;
+    setUsername(value);
+    if (value.length < 8) {
+      setUsernameError("Username must be at least 8 characters");
+    } else {
+      setUsernameError("");
+    }
+  }
 
   const isFormValid =
-    email.trim() !== "" && password.trim() !== "" && username.trim() !== "";
+    validateEmail(email) &&
+    password.length >= 8 &&
+    username.length >= 8 &&
+    !emailError &&
+    !passwordError &&
+    !usernameError;
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+    }
+    if (password.length < 8) {
+      setPasswordError("Password must be at least 8 characters");
+    }
+    if (username.length < 8) {
+      setUsernameError("Username must be at least 8 characters");
+    }
     if (isFormValid) {
       onSubmit({ email, password, username });
     }
@@ -41,9 +92,14 @@ function RegisterModal({
           className="modal__input"
           placeholder="Enter email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmailChange}
           required
         />
+        {emailError && (
+          <span className="modal__error" style={{ color: "red" }}>
+            {emailError}
+          </span>
+        )}
       </label>
       <label className="modal__label">
         Password
@@ -53,10 +109,15 @@ function RegisterModal({
           className="modal__input"
           placeholder="Enter password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
           required
           minLength={8}
         />
+        {passwordError && (
+          <span className="modal__error" style={{ color: "red" }}>
+            {passwordError}
+          </span>
+        )}
       </label>
       <label className="modal__label">
         Username
@@ -66,9 +127,14 @@ function RegisterModal({
           className="modal__input"
           placeholder="Enter your username"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={handleUsernameChange}
           required
         />
+        {usernameError && (
+          <span className="modal__error" style={{ color: "red" }}>
+            {usernameError}
+          </span>
+        )}
       </label>
       <button
         type="button"
