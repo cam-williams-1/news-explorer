@@ -7,4 +7,6 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  // Set the base path for Github Pages deployment (homepage)
+  base: "/news-explorer/",
 });
