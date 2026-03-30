@@ -1,11 +1,8 @@
-# news explorer
+# News Explorer
 
-- Vite initial install (React & JavaScript).
+## A front-end focused project that searches for news from news API.
 
-# To Do:
+### Things to try out
 
-- Build Homepage on Main.jsx
-  - Style Main.css
-  - Header
-  - Main Content (Search)
-  - Footer
+- Searching for news
+- Registering and siging in to save your favorite articles
