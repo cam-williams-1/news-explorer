@@ -19,3 +19,35 @@
   margin-right: 104px;
   gap: 14px;
 }
+
+@media (max-width: 1000px) {
+  .footer__text_icons {
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    height: 100px;
+  }
+  .footer__text {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    justify-content: space-around;
+  }
+
+  .footer__text_icons {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .footer__text {
+    font-size: 14px;
+  }
+
+  .footer__text_icons {
+    gap: 10px;
+  }
+}

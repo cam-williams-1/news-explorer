@@ -11,6 +11,7 @@
   height: 464px;
   object-fit: cover;
   border-radius: 50%;
+  padding-left: 10px;
 }
 
 .about__text {
@@ -35,4 +36,48 @@
   line-height: 24px;
   font-weight: 400;
   font-family: "Roboto Four";
+}
+
+@media (max-width: 1000px) {
+  .about__avatar {
+    padding-left: 25px;
+  }
+
+  .about__text_author {
+    width: 400px;
+  }
+
+  .about__text_bio {
+    width: 400px;
+  }
+}
+
+@media (max-width: 790px) {
+  .about {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about__avatar {
+    width: 350px;
+    height: 350px;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .about__avatar {
+    width: 200px;
+    height: 200px;
+  }
+
+  .about__text_author {
+    width: 250px;
+    font-size: 28px;
+  }
+
+  .about__text_bio {
+    width: 250px;
+    font-size: 15px;
+  }
 }

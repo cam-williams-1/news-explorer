@@ -7,12 +7,17 @@
 
 .main__title {
   color: #fff;
-  width: 608px;
+  width: 100%;
+  max-width: 608px;
   height: 128px;
   font-family: "Roboto Four";
   font-size: 60px;
   line-height: 64px;
-  margin: 80px 0 0; /* Adds 80px spacing from the header */
+  margin: 80px 0 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .main__subtitle {
@@ -22,4 +27,79 @@
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
+  text-align: center;
+  width: 100%;
+  max-width: 608px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  .main {
+    height: 400px;
+  }
+  .main__title {
+    font-size: 40px;
+    line-height: 44px;
+    height: auto;
+    margin-top: 48px;
+    max-width: 90vw;
+  }
+  .main__subtitle {
+    font-size: 16px;
+    margin: 24px 0 64px;
+    max-width: 90vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    height: auto;
+    padding: 24px 0 0 0;
+  }
+  .main__title {
+    font-size: 28px;
+    line-height: 32px;
+    margin: 32px 0 0;
+    max-width: 95vw;
+  }
+  .main__subtitle {
+    font-size: 14px;
+    margin: 16px 0 32px;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 320px) {
+  .main__title {
+    font-size: 20px;
+    line-height: 24px;
+    margin: 16px 0 0;
+    max-width: 98vw;
+  }
+  .main__subtitle {
+    font-size: 12px;
+    margin: 8px 0 16px;
+    max-width: 98vw;
+  }
+}
+@media (max-width: 600px) {
+  .main {
+    height: auto;
+    padding: 24px 0 0 0;
+  }
+  .main__title {
+    width: 90vw;
+    font-size: 28px;
+    line-height: 32px;
+    margin: 32px 0 0;
+    text-align: center;
+  }
+  .main__subtitle {
+    font-size: 14px;
+    margin: 16px 0 32px;
+    width: 90vw;
+    text-align: center;
+  }
 }

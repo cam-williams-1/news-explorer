@@ -1,3 +1,42 @@
+/* Dropdown menu for mobile */
+.header__dropdown-menu {
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  min-width: 160px;
+  z-index: 100;
+  padding: 12px 0;
+}
+
+.header__dropdown-link {
+  text-decoration: none;
+}
+
+.header__dropdown-btn {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: #222;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.header__dropdown-btn:hover {
+  background: #f0f0f0;
+}
+
+@media (min-width: 601px) {
+  .header__dropdown-menu {
+    display: none;
+  }
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -146,8 +185,8 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  margin-left: 76px;
-  margin-right: 64px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .header__btns-saved-saved-news {
@@ -159,6 +198,76 @@
   border: none;
   background: transparent;
   cursor: pointer;
-  margin-left: 76px;
-  margin-right: 64px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Dropdown menu icon hidden by default */
+.header__menu-icon {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-right: 24px;
+}
+
+@media (max-width: 1000px) {
+  .header__btns {
+    padding-right: 60px;
+  }
+
+  .header__btns_logged-in {
+    gap: 8px;
+    padding-right: 32px;
+  }
+}
+
+@media (max-width: 790px) {
+  .header__logo {
+    padding-left: 32px;
+    padding-top: 18px;
+    padding-bottom: 14px;
+  }
+  .header__btns,
+  .header__btns_logged-in {
+    padding-right: 32px;
+    gap: 18px;
+  }
+  .header__btns-home {
+    font-size: 14px;
+    padding: 6px 14px;
+  }
+  .header__title,
+  .header__title_saved-news {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .header__btns-home-stroke {
+    top: 43px;
+  }
+
+  .header__btns-home-stroke-saved-news {
+    top: 40px;
+  }
+
+  .header__btns-login {
+    width: 140px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header__btns,
+  .header__btns_logged-in {
+    display: none !important;
+  }
+  .header__menu-icon {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    z-index: 10;
+  }
 }

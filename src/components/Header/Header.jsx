@@ -3,8 +3,13 @@ import "./Header.css";
 import homeStroke from "../../assets/home-stroke.svg";
 import savedNewsStroke from "../../assets/savednews-stroke.svg";
 import logoutIcon from "../../assets/logout.svg";
+import menuIcon from "../../assets/menu.svg";
+import { useState } from "react";
 
 function Header({ isLoggedIn, isSavedNews, currentUser, onSignIn, onSignOut }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const handleMenuToggle = () => setIsMenuOpen((prev) => !prev);
+  const handleMenuClose = () => setIsMenuOpen(false);
   return (
     <header className={isSavedNews ? "header__saved-news" : "header"}>
       <div className="header__logo">
@@ -89,6 +94,61 @@ function Header({ isLoggedIn, isSavedNews, currentUser, onSignIn, onSignOut }) {
           </button>
         )}
       </div>
+      {/* Dropdown menu for mobile */}
+      {isMenuOpen && (
+        <div className="header__dropdown-menu">
+          <NavLink
+            to="/"
+            className="header__dropdown-link"
+            onClick={handleMenuClose}
+          >
+            <button className="header__dropdown-btn">Home</button>
+          </NavLink>
+          {isLoggedIn && (
+            <NavLink
+              to="/saved-news"
+              className="header__dropdown-link"
+              onClick={handleMenuClose}
+            >
+              <button className="header__dropdown-btn">Saved Articles</button>
+            </NavLink>
+          )}
+          {!isLoggedIn ? (
+            <button
+              className="header__dropdown-btn"
+              onClick={() => {
+                onSignIn();
+                handleMenuClose();
+              }}
+            >
+              Sign In
+            </button>
+          ) : (
+            <button
+              className="header__dropdown-btn"
+              onClick={() => {
+                onSignOut();
+                handleMenuClose();
+              }}
+            >
+              {currentUser?.name || "Cam"}
+              <img
+                className="header__btns-login-saved-news-logout"
+                src={logoutIcon}
+                alt="logout icon"
+              />
+            </button>
+          )}
+        </div>
+      )}
+      {/* Dropdown menu icon for mobile */}
+      <button
+        className="header__menu-icon"
+        aria-label="Open menu"
+        onClick={handleMenuToggle}
+      >
+        <img src={menuIcon} alt="menu icon" width={24} height={24} />
+      </button>
     </header>
   );
 }
