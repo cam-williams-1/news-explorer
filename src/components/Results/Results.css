@@ -1,0 +1,103 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  min-height: 374px;
+  background: #f5f6f7;
+}
+
+.results__container {
+  padding: 0 16px;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.results__title {
+  font-family: "Roboto Slab Four";
+  font-size: 40px;
+  line-height: 46px;
+  color: #1a1b22;
+  margin: 80px 0 64px 0;
+  text-align: left;
+}
+
+.results__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+  justify-items: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 32px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.results__item {
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  max-width: 380px;
+  flex: 1 1 340px;
+  box-sizing: border-box;
+}
+
+.results__empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 374px;
+  background: #f5f6f7;
+}
+
+.results__empty-icon {
+  margin-bottom: 31px;
+}
+
+.results__empty-text {
+  font-family: "Roboto Four";
+  font-size: 26px;
+  line-height: 30px;
+  color: #000;
+  text-align: center;
+  margin: 0 0 16px 0;
+}
+
+.results__empty-descript {
+  text-align: center;
+  margin: 0;
+  color: #6c707a;
+  font-family: "Roboto Four";
+  font-size: 18px;
+  line-height: 24px;
+  width: 270px;
+}
+
+.results__show-more {
+  display: block;
+  margin: 64px auto 80px auto;
+  padding: 12px 32px;
+  font-size: 18px;
+  background: #e8e8e8;
+  color: #1a1b22;
+  border: none;
+  border-radius: 80px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 288px;
+  height: 64px;
+  font-family: "Roboto Five";
+}
+
+.results__show-more:hover {
+  background: #cccccc;
+}

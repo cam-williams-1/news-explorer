@@ -1,0 +1,4 @@
+/* Style only the first label (Email) in the LoginModal */
+.modal__label:first-of-type {
+	color: #2F71E5 !important;
+}
